@@ -6,7 +6,8 @@ interface Props {
 }
 
 const TeachCards = ({ teachPromise }: Props) => {
-  const [addTo, setAddTo] = useState(false)
+  const [addTo, setAddTo] = useState(false);
+
 
   return (
     <article className="h-full flex flex-col group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-xl">
