@@ -9,10 +9,9 @@ import Footer from './Component/Cards/Footer'
 import Banner from './Component/Navbar/Banner'
 import Navbar from './Component/Navbar/Navbar'
 import TeachCard from './Component/Cards/TeachCard'
-
+import StackSidebar from './Component/Cards/StackSideBar'
 
 import type { Technology } from './type'
-import StackSidebar from './Component/Cards/StackSideBar'
 
 const teachPromise = async (): Promise<Technology[]> => {
   const response = await fetch('/data.json')
@@ -20,10 +19,10 @@ const teachPromise = async (): Promise<Technology[]> => {
   return data
 }
 
+const promise = teachPromise()
+
 function App() {
   const [stack, setStack] = useState<Technology[]>([])
-
-  const promise = teachPromise()
 
   function handleAdd(tech: Technology) {
     const alreadyAdded = stack.some((item) => item.id === tech.id)

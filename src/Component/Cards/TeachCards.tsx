@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { Technology } from '../../type'
 
 interface Props {
@@ -6,6 +7,8 @@ interface Props {
 }
 
 const TeachCards = ({ teachPromise, handleAdd }: Props) => {
+  const [isAdded, setIsAdded] = useState(false)
+
   return (
     <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-xl">
       <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-slate-900 via-pink-500 to-purple-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -60,10 +63,18 @@ const TeachCards = ({ teachPromise, handleAdd }: Props) => {
 
       <button
         type="button"
-        onClick={() => handleAdd(teachPromise)}
-        className="mt-5 w-full cursor-pointer rounded-xl bg-slate-900 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-slate-800"
+        disabled={isAdded}
+        onClick={() => {
+          handleAdd(teachPromise)
+          setIsAdded(true)
+        }}
+        className={`mt-5 w-full rounded-xl py-2.5 text-sm font-semibold transition-colors ${
+          isAdded
+            ? 'cursor-not-allowed bg-emerald-50 text-emerald-600'
+            : 'cursor-pointer bg-slate-900 text-white hover:bg-slate-800'
+        }`}
       >
-        Add to Stack
+        {isAdded ? '✓ Added to Stack' : 'Add to Stack'}
       </button>
     </article>
   )
