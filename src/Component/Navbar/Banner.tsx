@@ -3,7 +3,7 @@ import banner from '/banner-stack.png'
 
 const Banner = () => {
   return (
-    <div className=" gap-10 relative mx-auto mt-5 flex max-w-6xl items-center justify-between px-4">
+    <div className=" gap-10 relative mx-auto mt-5 flex max-w-7xl items-center justify-between px-4">
       <div>
         <h1 className="text-4xl font-bold">Build Your Ideal Development</h1>
 

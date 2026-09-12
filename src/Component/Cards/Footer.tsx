@@ -6,7 +6,7 @@ const LINK_GROUPS: { title: string; links: string[] }[] = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-slate-200 bg-white">
+    <footer className="border-t border-slate-200 bg-white mt-10  max-w-7xl mx-auto">
       <div className="mx-auto max-w-7xl px-5 py-14 lg:px-8">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>

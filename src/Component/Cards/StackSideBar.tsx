@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
 const StackSideBar = () => {
-  const stack: unknown[] = [];
+  const stack: unknown[] = []
 
   return (
     <div>
@@ -18,11 +18,11 @@ const StackSideBar = () => {
             </p>
           </div>
         ) : (
-          <ul>{/* selected item গুলো এখানে */}</ul>
+          ""
         )}
       </aside>
     </div>
   )
-};
+}
 
-export default StackSideBar;
+export default StackSideBar
