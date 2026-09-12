@@ -1,13 +1,18 @@
 import { Suspense, useState } from 'react'
+
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+
 import './App.css'
 
 import Footer from './Component/Cards/Footer'
 import Banner from './Component/Navbar/Banner'
 import Navbar from './Component/Navbar/Navbar'
 import TeachCard from './Component/Cards/TeachCard'
+
+
 import type { Technology } from './type'
+import StackSidebar from './Component/Cards/StackSideBar'
 
 const teachPromise = async (): Promise<Technology[]> => {
   const response = await fetch('/data.json')
@@ -50,10 +55,11 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-red-100">
+    <div className="min-h-screen bg-[#FFFFFF]">
       <ToastContainer />
 
       <Navbar />
+
       <Banner />
 
       <div className="mx-auto mt-5 max-w-7xl p-5">
@@ -69,46 +75,11 @@ function App() {
           <TeachCard teachPromise={promise} handleAdd={handleAdd} />
         </Suspense>
 
-        <aside className="h-fit rounded-2xl border border-slate-200 bg-white p-5 lg:sticky lg:top-24">
-          <h3 className="text-lg font-bold text-slate-900">Your Stack</h3>
-
-          <p className="mt-1 text-sm text-slate-500">
-            {stack.length} Technology Selected
-          </p>
-
-          <div className="mt-6 rounded-xl border border-dashed border-slate-200 px-4 py-8 text-center">
-            {stack.length === 0 ? (
-              <p className="text-sm text-slate-400">
-                Nothing here yet. Add a technology to start building your stack.
-              </p>
-            ) : (
-              <div className="space-y-2">
-                {stack.map((tech) => (
-                  <div
-                    key={tech.id}
-                    className="flex items-center justify-between rounded-lg bg-slate-100 p-3"
-                  >
-                    <span>{tech.name}</span>
-
-                    <button
-                      onClick={() => handleRemove(tech.id)}
-                      className="text-red-500"
-                    >
-                      Remove
-                    </button>
-                  </div>
-                ))}
-
-                <button
-                  onClick={handleRemoveAll}
-                  className="mt-3 text-sm font-semibold text-red-500"
-                >
-                  Clear All
-                </button>
-              </div>
-            )}
-          </div>
-        </aside>
+        <StackSidebar
+          stack={stack}
+          onRemove={handleRemove}
+          onRemoveAll={handleRemoveAll}
+        />
       </div>
 
       <Footer />

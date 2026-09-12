@@ -1,16 +1,13 @@
-import { useState } from 'react'
 import type { Technology } from '../../type'
 
 interface Props {
   teachPromise: Technology
+  handleAdd: (tech: Technology) => void
 }
 
-const TeachCards = ({ teachPromise }: Props) => {
-  const [addTo, setAddTo] = useState(false);
-
-
+const TeachCards = ({ teachPromise, handleAdd }: Props) => {
   return (
-    <article className="h-full flex flex-col group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-xl">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-xl">
       <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-slate-900 via-pink-500 to-purple-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
       <div className="flex items-start justify-between">
@@ -63,15 +60,10 @@ const TeachCards = ({ teachPromise }: Props) => {
 
       <button
         type="button"
-        disabled={addTo}
-        onClick={() => setAddTo(true)}
-        className={`mt-5 w-full rounded-xl py-2.5 text-sm font-semibold transition-colors cursor-alias ${
-          addTo
-            ? 'cursor-not-allowed bg-emerald-50 text-emerald-600'
-            : 'bg-slate-900 text-white hover:bg-slate-800'
-        }`}
+        onClick={() => handleAdd(teachPromise)}
+        className="mt-5 w-full cursor-pointer rounded-xl bg-slate-900 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-slate-800"
       >
-        {addTo ? '✓ Added to Stack' : 'Add to Stack'}
+        Add to Stack
       </button>
     </article>
   )

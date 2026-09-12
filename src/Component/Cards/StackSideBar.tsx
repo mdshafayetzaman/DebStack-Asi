@@ -1,5 +1,4 @@
-import type { Technology } from "../../type"
-
+import type { Technology } from '../../type'
 
 interface StackSidebarProps {
   stack: Technology[]
@@ -17,6 +16,7 @@ export default function StackSidebar({
       <h3 className="font-display text-lg font-bold text-slate-900">
         Your Stack
       </h3>
+
       <p className="mt-1 text-sm text-slate-500">
         {stack.length} Technology Selected
       </p>
@@ -42,12 +42,15 @@ export default function StackSidebar({
                   className="h-6 w-6 shrink-0"
                   loading="lazy"
                 />
+
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-sm font-semibold text-slate-800">
                     {tech.name}
                   </p>
+
                   <p className="text-xs text-slate-400">{tech.category}</p>
                 </div>
+
                 <button
                   type="button"
                   onClick={() => onRemove(tech.id)}
