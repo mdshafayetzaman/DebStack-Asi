@@ -5,7 +5,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <div className="sticky top-0 z-50 bg-red-100">
+    <div className="sticky top-0 z-50 ">
       <div className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-5">
         <button
           onClick={() => setMenuOpen(!menuOpen)}
